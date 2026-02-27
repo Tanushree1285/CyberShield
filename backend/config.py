@@ -8,8 +8,9 @@ class Config:
 class DevelopmentConfig(Config):
     """Development configuration."""
     DEBUG = True
-    # Default Dev Database URI for PostgreSQL
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL', 'postgresql://user:password@localhost/cybershield_dev')
+    # Default Dev Database URI for SQLite
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL', f'sqlite:///{os.path.join(basedir, "cybershield_dev.db")}')
 
 class ProductionConfig(Config):
     """Production configuration."""
