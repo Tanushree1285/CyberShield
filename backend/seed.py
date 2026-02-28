@@ -10,16 +10,24 @@ def seed_db():
         db.create_all()
 
         # Check if already seeded
-        if Country.query.first() is not None:
-            print("Database is already seeded.")
-            return
+        #if Country.query.first() is not None:
+         #   print("Database is already seeded.")
+          #  return
 
         print("Seeding database...")
 
         # Create Countries
-        india = Country(name="India", code="IN")
-        ireland = Country(name="Ireland", code="IE")
-        db.session.add_all([india, ireland])
+        # Create Countries safely (avoid duplicates)
+        india = Country.query.filter_by(code="IN").first()
+        if not india:
+            india = Country(name="India", code="IN")
+            db.session.add(india)
+
+        ireland = Country.query.filter_by(code="IE").first()
+        if not ireland:
+            ireland = Country(name="Ireland", code="IE")
+            db.session.add(ireland)
+
         db.session.commit()
 
         # Articles
@@ -35,9 +43,79 @@ def seed_db():
 
         # Portals
         portals = [
-            Portal(name="Cybercrime.gov.in", url="https://cybercrime.gov.in", description="Official portal to report cyber crime in India.", country_id=india.id),
-            Portal(name="Garda Cyber Crime Bureau", url="https://www.garda.ie/en/about-us/our-departments/garda-national-cyber-crime-bureau-gnccb-/", description="Official cybercrime reporting resources in Ireland.", country_id=ireland.id),
-        ]
+
+    # INDIA
+    Portal(
+        name="Cybercrime.gov.in",
+        url="https://cybercrime.gov.in",
+        description="Official portal to report cyber crime in India.",
+        country_id=india.id
+    ),
+
+    Portal(
+        name="CERT-In",
+        url="https://www.cert-in.org.in",
+        description="Indian Computer Emergency Response Team handling cybersecurity incidents and issuing security alerts.",
+        country_id=india.id
+    ),
+
+    Portal(
+        name="Cyber Volunteer Portal",
+        url="https://cybervolunteer.mha.gov.in",
+        description="Government portal allowing citizens to report unlawful online content and support cyber awareness.",
+        country_id=india.id
+    ),
+
+    Portal(
+        name="Sanchar Saathi",
+        url="https://sancharsaathi.gov.in",
+        description="Portal to report telecom fraud, block lost mobile phones, and manage spam communications.",
+        country_id=india.id
+    ),
+
+    Portal(
+        name="Maharashtra Cyber",
+        url="https://www.mahacyber.gov.in",
+        description="Cybercrime awareness and reporting portal managed by Maharashtra Cyber Cell.",
+        country_id=india.id
+    ),
+
+    # IRELAND
+    Portal(
+        name="Garda Cyber Crime Bureau",
+        url="https://www.garda.ie/en/about-us/our-departments/garda-national-cyber-crime-bureau-gnccb-/",
+        description="Cybercrime investigation unit of the Irish police providing reporting guidance.",
+        country_id=ireland.id
+    ),
+
+    Portal(
+        name="National Cyber Security Centre Ireland",
+        url="https://www.ncsc.gov.ie",
+        description="Ireland’s national authority responsible for cybersecurity guidance and incident response.",
+        country_id=ireland.id
+    ),
+
+    Portal(
+        name="CSIRT-IE Incident Reporting",
+        url="https://www.ncsc.gov.ie/contact/report-an-incident/",
+        description="Official portal to report cybersecurity incidents affecting organisations in Ireland.",
+        country_id=ireland.id
+    ),
+
+    Portal(
+        name="Hotline.ie",
+        url="https://www.hotline.ie",
+        description="Irish internet safety hotline to report illegal or harmful online content.",
+        country_id=ireland.id
+    ),
+
+    Portal(
+        name="IRISS",
+        url="https://www.iriss.ie",
+        description="Irish cyber threat intelligence and security information sharing service.",
+        country_id=ireland.id
+    ),
+       ]
         db.session.add_all(portals)
 
         # Guides

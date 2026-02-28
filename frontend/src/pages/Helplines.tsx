@@ -19,11 +19,11 @@ const Helplines = () => {
         {data.map((h) => (
           <ResourceCard
             key={h.id}
-            title={h.title}
+            title={h.name}
             description={h.description}
             country={h.country}
             icon={<Phone className="h-4 w-4" />}
-            tag={h.number}
+            tag={h.phone}
           />
         ))}
       </div>
