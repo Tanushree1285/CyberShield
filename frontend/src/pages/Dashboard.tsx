@@ -15,11 +15,26 @@ const Dashboard = () => {
     }
   });
 
+  const { data: distributionData } = useQuery({
+    queryKey: ["dashboard-distribution"],
+    queryFn: async () => {
+      const res = await dashboardApi.getDistribution();
+      return res.data.data;
+    }
+  });
+
   const stats = [
     { label: "Articles", value: rawStats?.articles || 0, icon: <Newspaper className="h-5 w-5" />, trend: "Latest advisories" },
     { label: "Helplines", value: rawStats?.helplines || 0, icon: <Phone className="h-5 w-5" />, trend: "Emergency contacts" },
     { label: "Portals", value: rawStats?.portals || 0, icon: <Globe className="h-5 w-5" />, trend: "Reporting sites" },
     { label: "Guides", value: rawStats?.guides || 0, icon: <BookOpen className="h-5 w-5" />, trend: "Safety tutorials" },
+  ];
+
+  const resourceOverviewData = [
+    { name: "Articles", count: rawStats?.articles || 0 },
+    { name: "Helplines", count: rawStats?.helplines || 0 },
+    { name: "Portals", count: rawStats?.portals || 0 },
+    { name: "Guides", count: rawStats?.guides || 0 },
   ];
 
   return (
@@ -33,8 +48,8 @@ const Dashboard = () => {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <ResourceStatsChart />
-        <CountryDistributionChart />
+        <ResourceStatsChart data={resourceOverviewData} />
+        <CountryDistributionChart data={distributionData} />
       </div>
     </PageContainer>
   );

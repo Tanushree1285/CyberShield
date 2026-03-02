@@ -19,3 +19,11 @@ def get_dashboard_data():
     }
     
     return jsonify({"status": "success", "data": data})
+
+@dashboard_bp.route('/distribution', methods=['GET'])
+def get_dashboard_distribution():
+    """
+    Get resource distribution across countries.
+    """
+    distribution = DashboardService.get_distribution()
+    return jsonify({"status": "success", "data": distribution})

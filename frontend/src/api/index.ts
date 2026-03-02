@@ -41,6 +41,7 @@ export const guideApi = {
 /** Dashboard API */
 export const dashboardApi = {
   getStats: () => api.get("/dashboard"),
+  getDistribution: () => api.get("/dashboard/distribution"),
 };
 
 /** Chatbot API */

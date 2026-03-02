@@ -1,4 +1,4 @@
-from models import Article, Helpline, Portal, Guide
+from models import Article, Helpline, Portal, Guide, Country
 
 class DashboardService:
     @staticmethod
@@ -14,3 +14,23 @@ class DashboardService:
             "portals": apply_filter(Portal.query).count(),
             "guides": apply_filter(Guide.query).count()
         }
+
+    @staticmethod
+    def get_distribution():
+        countries = Country.query.all()
+        distribution = []
+        
+        for country in countries:
+            count = (
+                Article.query.filter_by(country_id=country.id).count() +
+                Helpline.query.filter_by(country_id=country.id).count() +
+                Portal.query.filter_by(country_id=country.id).count() +
+                Guide.query.filter_by(country_id=country.id).count()
+            )
+            if count > 0:
+                distribution.append({
+                    "name": country.name,
+                    "value": count
+                })
+        
+        return distribution
