@@ -6,7 +6,8 @@ class Guide(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.Text, nullable=False)
+    description = db.Column(db.String(500), nullable=True)  # Short summary for card display
+    content = db.Column(db.Text, nullable=False)             # Full detailed guide body (HTML)
     category = db.Column(db.String(100))
     
     # Region-based filtering

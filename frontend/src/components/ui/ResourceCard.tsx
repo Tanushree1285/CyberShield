@@ -11,7 +11,7 @@ interface ResourceCardProps {
 
 /** Reusable card for displaying cyber resources */
 const ResourceCard = ({ title, description, country, icon, actions, tag }: ResourceCardProps) => (
-  <div className="group rounded-lg border border-border bg-card p-5 hover:cyber-border hover:cyber-glow transition-all duration-300">
+  <div className="group rounded-lg border border-border bg-card p-5 hover:cyber-border hover:cyber-glow transition-all duration-300 h-full">
     <div className="flex items-start justify-between gap-3">
       <div className="flex items-start gap-3 flex-1">
         {icon && (

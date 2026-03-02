@@ -17,7 +17,8 @@ class GuideService:
             {
                 "id": str(item.id),
                 "title": item.title,
-                "description": item.content,
+                "description": item.description or "",
+                "content": item.content,
                 "category": item.category,
                 "country": item.country.name if item.country else "Global"
             }
@@ -34,7 +35,8 @@ class GuideService:
         return {
             "id": str(item.id),
             "title": item.title,
-            "description": item.content,
+            "description": item.description or "",
+            "content": item.content,
             "category": item.category,
             "country": item.country.name if item.country else "Global"
         }

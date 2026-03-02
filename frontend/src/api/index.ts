@@ -32,6 +32,7 @@ export const portalApi = {
 /** Guides API */
 export const guideApi = {
   getAll: (country?: string) => api.get("/guides", { params: { country } }),
+  getById: (id: string) => api.get(`/guides/${id}`),
   create: (data: any) => api.post("/guides", data),
   update: (id: string, data: any) => api.put(`/guides/${id}`, data),
   delete: (id: string) => api.delete(`/guides/${id}`),
