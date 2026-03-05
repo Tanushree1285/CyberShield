@@ -6,8 +6,7 @@ import CountrySelector from "@/components/ui/CountrySelector";
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/articles", label: "Articles" },
-  { path: "/helplines", label: "Helplines" },
-  { path: "/portals", label: "Portals" },
+  { path: "/resources", label: "Resources" },
   { path: "/guides", label: "Guides" },
   { path: "/dashboard", label: "Dashboard" },
 ];
@@ -32,11 +31,10 @@ const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                pathname === item.path
-                  ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-              }`}
+              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === item.path
+                ? "bg-accent text-accent-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
             >
               {item.label}
             </Link>
@@ -71,11 +69,10 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  pathname === item.path
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${pathname === item.path
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {item.label}
               </Link>

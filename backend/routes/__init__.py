@@ -4,6 +4,7 @@ from .portal_routes import portal_bp
 from .guide_routes import guide_bp
 from .dashboard_routes import dashboard_bp
 from .chatbot_routes import chatbot_bp
+from .attack_routes import attack_bp
 
 def register_blueprints(app):
     """
@@ -15,3 +16,4 @@ def register_blueprints(app):
     app.register_blueprint(guide_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(chatbot_bp)
+    app.register_blueprint(attack_bp)

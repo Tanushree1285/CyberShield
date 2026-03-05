@@ -2,12 +2,12 @@ import PageContainer from "@/components/layout/PageContainer";
 import ResourceCard from "@/components/ui/ResourceCard";
 import CountrySelector from "@/components/ui/CountrySelector";
 import { useFetchResources } from "@/hooks/useFetchResources";
-import { portalApi } from "@/api";
+import { portalApi, Portal } from "@/api";
 import { Globe } from "lucide-react";
 
 /** Reporting portals page */
 const Portals = () => {
-  const { data, loading } = useFetchResources(portalApi.getAll, "portals");
+  const { data, loading } = useFetchResources<Portal>(portalApi.getAll, "portals");
 
   return (
     <PageContainer
@@ -25,7 +25,7 @@ const Portals = () => {
             className="block cursor-pointer no-underline h-full"
           >
             <ResourceCard
-              title={p.title}
+              title={p.name}
               description={p.description}
               country={p.country}
               icon={<Globe className="h-4 w-4" />}
