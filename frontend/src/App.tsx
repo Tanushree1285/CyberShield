@@ -11,6 +11,7 @@ import Home from "@/pages/Home";
 import Articles from "@/pages/Articles";
 import Helplines from "@/pages/Helplines";
 import Portals from "@/pages/Portals";
+import Resources from "@/pages/Resources";
 import Guides from "@/pages/Guides";
 import Dashboard from "@/pages/Dashboard";
 import Admin from "@/pages/admin/Admin";
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/articles" element={<Articles />} />
                 <Route path="/helplines" element={<Helplines />} />
                 <Route path="/portals" element={<Portals />} />
+                <Route path="/resources" element={<Resources />} />
                 <Route path="/guides" element={<Guides />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/admin" element={<Admin />} />

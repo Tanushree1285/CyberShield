@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageContainer from "@/components/layout/PageContainer";
 import CountrySelector from "@/components/ui/CountrySelector";
 import { useFetchResources } from "@/hooks/useFetchResources";
-import { guideApi } from "@/api";
+import { guideApi, Guide } from "@/api";
 import { BookOpen, Shield, AlertTriangle, ShoppingCart, Users, KeyRound, Briefcase, Phone, Car, MessageCircle, Mail, CreditCard, Lock, ShieldAlert } from "lucide-react";
 import {
   Dialog,
@@ -31,8 +31,8 @@ const GUIDE_ICONS: Record<string, React.ReactNode> = {
 
 /** Guides page — cyber safety step-by-step guides */
 const Guides = () => {
-  const { data } = useFetchResources(guideApi.getAll, "guides");
-  const [selectedGuide, setSelectedGuide] = useState<any | null>(null);
+  const { data } = useFetchResources<Guide>(guideApi.getAll, "guides");
+  const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
 
   return (
     <PageContainer
@@ -41,7 +41,7 @@ const Guides = () => {
       actions={<CountrySelector />}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {data.map((guide: any) => (
+        {data.map((guide: Guide) => (
           <button
             key={guide.id}
             onClick={() => setSelectedGuide(guide)}

@@ -9,6 +9,14 @@ def get_dashboard_data():
     Get aggregated dashboard data for a specific country.
     """
     country_id = request.args.get('country_id')
+    country_name = request.args.get('country')
+    
+    if not country_id and country_name and country_name != 'All':
+        from models import Country
+        country = Country.query.filter_by(name=country_name).first()
+        if country:
+            country_id = country.id
+            
     stats = DashboardService.get_stats(country_id)
     
     data = {
