@@ -52,7 +52,7 @@ const Resources = () => {
         >
             <div className="flex flex-col lg:flex-row gap-6 h-auto lg:h-[calc(100vh-220px)] lg:min-h-[650px]">
                 {/* Left Column: Helplines (30% Width on Desktop) */}
-                <div className="w-full lg:w-[30%] flex flex-col h-[500px] lg:h-full border border-border/50 rounded-2xl bg-card/20 backdrop-blur-sm overflow-hidden shadow-xl ring-1 ring-white/5">
+                <div className="w-full lg:w-[30%] flex flex-col h-[500px] lg:h-full cyber-card overflow-hidden shadow-xl ring-1 ring-white/5">
                     <div className="p-5 border-b border-border/50 bg-muted/20 flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shadow-inner">
                             <Phone className="h-5 w-5 text-primary" />
@@ -78,7 +78,7 @@ const Resources = () => {
                             </div>
                         ) : (
                             helplines.map((h) => (
-                                <div key={h.id} className="p-5 rounded-xl bg-card border border-border/50 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
+                                <div key={h.id} className="p-5 rounded-xl border border-border/50 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group bg-card/40">
                                     <h3 className="font-bold text-foreground group-hover:text-primary transition-colors mb-1">{h.name}</h3>
                                     <p className="text-xs text-muted-foreground leading-relaxed mb-4">{h.description}</p>
 
@@ -101,7 +101,7 @@ const Resources = () => {
                 </div>
 
                 {/* Right Column: Official Portals (70% Width on Desktop) */}
-                <div className="w-full lg:w-[70%] flex flex-col h-[500px] lg:h-full border border-border/50 rounded-2xl bg-card/20 backdrop-blur-sm overflow-hidden shadow-xl ring-1 ring-white/5">
+                <div className="w-full lg:w-[70%] flex flex-col h-[500px] lg:h-full portal-container overflow-hidden shadow-xl ring-1 ring-white/5">
                     <div className="p-5 border-b border-border/50 bg-muted/20 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shadow-inner">
@@ -144,7 +144,7 @@ const Resources = () => {
                                     rel="noopener noreferrer"
                                     className="min-w-[320px] md:min-w-[400px] lg:min-w-[450px] h-[380px] flex-shrink-0 snap-center group no-underline"
                                 >
-                                    <div className="h-full border border-border/40 bg-card/80 backdrop-blur-md rounded-2xl p-10 flex flex-col justify-between hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 shadow-xl ring-1 ring-white/5 relative overflow-hidden">
+                                    <div className="h-full portal-card flex flex-col justify-between hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
                                         {/* Decorative background icon */}
                                         <div className="absolute -right-4 -bottom-4 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500">
                                             <Globe className="h-40 w-40" />

@@ -6,66 +6,116 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 93%;
+    --card: #ffffff;
+    --ring: #cd7f32;
+    /* Bronze */
+    --input: #e5e7eb;
+    --muted: #f9f7f5;
+    --accent: #fdfaf7;
+    --border: #e7e5e4;
+    --radius: 0.75rem;
+    --chart-1: #cd7f32;
+    --chart-2: #a0522d;
+    --chart-3: #8b4513;
+    --chart-4: #d2691e;
+    --chart-5: #e6ccb2;
+    --popover: #ffffff;
+    --primary: #cd7f32;
+    --sidebar: #fdfaf7;
+    --secondary: #8b4513;
+    --background: #fffdfc;
+    --foreground: #3d3028;
+    --destructive: #ef4444;
+    --sidebar-ring: #e7e5e4;
+    --sidebar-accent: #f5f5f4;
+    --sidebar-border: #e7e5e4;
+    --card-foreground: #3d3028;
+    --sidebar-primary: #cd7f32;
+    --muted-foreground: #8a7b6f;
+    --accent-foreground: #cd7f32;
+    --popover-foreground: #3d3028;
+    --primary-foreground: #ffffff;
+    --sidebar-foreground: #44403c;
+    --secondary-foreground: #ffffff;
+    --destructive-foreground: #ffffff;
+    --sidebar-accent-foreground: #44403c;
+    --sidebar-primary-foreground: #ffffff;
 
-    --card: 222 44% 9%;
-    --card-foreground: 210 40% 93%;
+    /* Bronze-Gold Theme Tokens */
+    --bronze-primary: #cd7f32;
+    --bronze-secondary: #8b4513;
+    --bronze-light: #e6b980;
+    --bronze-gradient: linear-gradient(135deg, #cd7f32 0%, #a0522d 50%, #8b4513 100%);
+    --bronze-soft-gradient: linear-gradient(135deg, rgba(205, 127, 50, 0.05) 0%, rgba(139, 69, 19, 0.02) 100%);
+    --bg-gradient-1: #fffdfc;
+    --bg-gradient-2: #faf8f5;
+    --text-gradient: linear-gradient(to right, #cd7f32, #8b4513);
+    --btn-gradient: linear-gradient(135deg, #cd7f32 0%, #a0522d 100%);
+    --legal-font-color: #5d4a3e;
+    --section-divider: linear-gradient(to right, transparent, rgba(205, 127, 50, 0.1), transparent);
+    --bronze-hue-soft: rgba(205, 127, 50, 0.03);
+  }
 
-    --popover: 222 44% 9%;
-    --popover-foreground: 210 40% 93%;
+  .dark {
+    --card: #1c1917;
+    --ring: #cd7f32;
+    --input: #292524;
+    --muted: #292524;
+    --accent: #292524;
+    --border: #44403c;
+    --radius: 0.75rem;
+    --chart-1: #cd7f32;
+    --chart-2: #e6b980;
+    --chart-3: #a0522d;
+    --chart-4: #8b4513;
+    --chart-5: #4a3728;
+    --popover: #1c1917;
+    --primary: #cd7f32;
+    --sidebar: #1c1917;
+    --secondary: #a0522d;
+    --background: #0c0a09;
+    --foreground: #f7f2ed;
+    --destructive: #7f1d1d;
+    --sidebar-ring: #44403c;
+    --sidebar-accent: #292524;
+    --sidebar-border: #292524;
+    --card-foreground: #f7f2ed;
+    --sidebar-primary: #cd7f32;
+    --muted-foreground: #a8a29e;
+    --accent-foreground: #f7f2ed;
+    --popover-foreground: #f7f2ed;
+    --primary-foreground: #0c0a09;
+    --sidebar-foreground: #e7e5e4;
+    --secondary-foreground: #f7f2ed;
+    --destructive-foreground: #ffffff;
+    --sidebar-accent-foreground: #e7e5e4;
+    --sidebar-primary-foreground: #0c0a09;
 
-    --primary: 187 80% 48%;
-    --primary-foreground: 222 47% 6%;
-
-    --secondary: 222 30% 16%;
-    --secondary-foreground: 210 40% 85%;
-
-    --muted: 222 30% 14%;
-    --muted-foreground: 215 20% 55%;
-
-    --accent: 187 60% 20%;
-    --accent-foreground: 187 80% 70%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 187 80% 48%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 85%;
-    --sidebar-primary: 187 80% 48%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 14%;
-    --sidebar-accent-foreground: 210 40% 85%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 187 80% 48%;
-
-    /* CyberShield custom tokens */
-    --cyber-glow: 187 80% 48%;
-    --cyber-green: 160 84% 39%;
-    --cyber-amber: 38 92% 50%;
-    --cyber-red: 0 72% 51%;
-    --cyber-purple: 270 60% 55%;
-
-    --gradient-cyber: linear-gradient(135deg, hsl(187 80% 48%), hsl(220 70% 50%));
-    --gradient-card: linear-gradient(180deg, hsl(222 44% 11%), hsl(222 44% 8%));
-    --shadow-glow: 0 0 20px hsl(187 80% 48% / 0.15);
-    --shadow-card: 0 4px 24px hsl(222 47% 3% / 0.5);
+    --bg-gradient-1: #0c0a09;
+    --bg-gradient-2: #1c1917;
+    --bg-gradient-3: #000000;
+    --text-gradient: linear-gradient(to right, #cd7f32, #f7f2ed);
+    --btn-gradient: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%);
+    --legal-font-color: #d8c3b5;
+    --section-divider: linear-gradient(to right, transparent, rgba(205, 127, 50, 0.2), transparent);
+    --bronze-hue-soft: rgba(205, 127, 50, 0.08);
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    color: var(--foreground);
+    background-color: var(--background);
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(205, 127, 50, 0.04), transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(139, 69, 19, 0.04), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(230, 185, 128, 0.02), transparent 65%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+    background-attachment: fixed;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -77,15 +127,20 @@
 
 @layer utilities {
   .cyber-glow {
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 0 20px var(--accent-glow);
   }
 
-  .cyber-border {
-    border: 1px solid hsl(var(--primary) / 0.2);
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
   }
 
-  .gradient-cyber {
-    background: var(--gradient-cyber);
+  .glass-navbar {
+    background: rgba(11, 15, 26, 0.6);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--card-border);
   }
 
   .text-gradient-cyber {
@@ -93,6 +148,153 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .text-gradient-brown {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-gold-gradient {
+    background: var(--btn-gradient);
+    color: var(--primary-foreground);
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gold-gradient:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(205, 127, 50, 0.2);
+  }
+
+  .bronze-hue-soft {
+    background-color: var(--bronze-hue-soft);
+    border: 1px solid rgba(205, 127, 50, 0.08);
+  }
+
+  .chatbot-icon-gradient {
+    fill: url(#bronzeGradient);
+  }
+
+  /* CYBERSHIELD GLOBAL CARD STYLING */
+  .cyber-card {
+    position: relative;
+    background: linear-gradient(145deg,
+        rgba(184, 115, 51, 0.08),
+        rgba(120, 72, 33, 0.04),
+        rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(160, 100, 50, 0.25) !important;
+    border-radius: 12px;
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.05),
+      0 6px 18px rgba(120, 72, 33, 0.08);
+    transition: all 0.25s ease;
+    overflow: hidden;
+  }
+
+  .cyber-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 6px 20px rgba(120, 72, 33, 0.15),
+      0 12px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(184, 115, 51, 0.45) !important;
+  }
+
+  .cyber-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom,
+        rgba(184, 115, 51, 0.7),
+        rgba(120, 72, 33, 0.2));
+    border-radius: 12px 0 0 12px;
+    z-index: 1;
+  }
+
+  /* CUSTOM BADGES */
+  .badge-advisory {
+    background: rgba(184, 115, 51, 0.15) !important;
+    color: #7a4b22 !important;
+    border: 1px solid rgba(184, 115, 51, 0.2) !important;
+  }
+
+  .badge-cybercrime {
+    background: rgba(220, 38, 38, 0.12) !important;
+    color: #b91c1c !important;
+    border: 1px solid rgba(220, 38, 38, 0.2) !important;
+  }
+
+  .badge-awareness {
+    background: rgba(34, 197, 94, 0.12) !important;
+    color: #15803d !important;
+    border: 1px solid rgba(34, 197, 94, 0.2) !important;
+  }
+
+  /* SPECIALIZED POLISHED CARDS */
+  .portal-container {
+    background: linear-gradient(135deg,
+        rgba(210, 195, 180, 0.25),
+        rgba(184, 115, 51, 0.10),
+        rgba(255, 255, 255, 0.85));
+    border: 1px solid rgba(184, 115, 51, 0.25) !important;
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .feature-card {
+    background: linear-gradient(145deg,
+        rgba(184, 115, 51, 0.08),
+        rgba(120, 72, 33, 0.05),
+        rgba(255, 255, 255, 0.92));
+    border: 1px solid rgba(184, 115, 51, 0.28) !important;
+    border-radius: 12px;
+    box-shadow:
+      0 3px 8px rgba(0, 0, 0, 0.05),
+      0 10px 22px rgba(120, 72, 33, 0.08);
+    transition: all 0.25s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(120, 72, 33, 0.15);
+    border-color: rgba(184, 115, 51, 0.45) !important;
+  }
+
+  .portal-card {
+    background: linear-gradient(140deg,
+        rgba(184, 115, 51, 0.10),
+        rgba(255, 255, 255, 0.95));
+    border: 1px solid rgba(184, 115, 51, 0.30) !important;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .portal-card:hover {
+    border-color: rgba(184, 115, 51, 0.5) !important;
+    box-shadow: 0 12px 24px rgba(120, 72, 33, 0.12);
+  }
+
+  .guide-document {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .section-divider {
+    height: 1px;
+    width: 100%;
+    background: var(--section-divider);
   }
 
   .card-gradient {
@@ -115,6 +317,22 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--muted-foreground) / 0.3);
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
   }
 
   @keyframes radar-sweep {
@@ -145,33 +363,123 @@
     animation: spin-slow 8s linear infinite;
   }
 
-  @keyframes swing {
-    0% {
-      transform: rotate(0deg);
-    }
+  /* --- SOC THREAT MAP REDESIGN --- */
 
-    20% {
-      transform: rotate(15deg);
-    }
+  .map-card {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #0b1220, #020617);
+    border: 1px solid rgba(0, 255, 255, 0.08);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.05);
+  }
 
-    40% {
-      transform: rotate(-10deg);
-    }
+  .map-container {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    background: #060b12;
+    /* Very dark SOC background */
+  }
 
-    60% {
-      transform: rotate(5deg);
-    }
+  .map-wrapper {
+    width: 100%;
+    height: 100%;
+  }
 
-    80% {
-      transform: rotate(-5deg);
-    }
+  .map-wrapper canvas,
+  .map-wrapper .leaflet-container,
+  .map-wrapper .mapboxgl-map {
+    width: 100% !important;
+    height: 100% !important;
+    background: #060b12 !important;
+    filter: brightness(0.85) contrast(1.1);
+    /* Darken base map slightly */
+  }
 
+  .map-expanded {
+    height: 65vh;
+    max-height: 700px;
+  }
+
+  /* Tactical Controls Overlay */
+  .overlay-panel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 6px 10px;
+    z-index: 1000;
+    /* Ensure Leaflet maps render underneath */
+  }
+
+  /* Glass Map Header */
+  .map-header {
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.6));
+    border-bottom: 1px solid rgba(0, 255, 255, 0.08);
+    z-index: 1000;
+  }
+
+  /* Live Feed spacing adjustment */
+  .live-feed-section {
+    margin-top: 0;
+  }
+
+  /* Pulse Animation for Shiny Blinking Markers */
+  @keyframes shinyBlink {
+
+    0%,
     100% {
-      transform: rotate(0deg);
+      opacity: 1;
+      box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.7), inset 0 0 6px rgba(255, 255, 255, 0.9);
+    }
+
+    50% {
+      opacity: 0.4;
+      box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3), inset 0 0 2px rgba(255, 255, 255, 0.4);
     }
   }
 
-  .animate-swing {
-    animation: swing 1s ease-in-out;
+  @keyframes threatPulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.8;
+    }
+
+    70% {
+      transform: scale(2.5);
+      opacity: 0;
+      box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .threat-marker {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: shinyBlink 1.2s infinite ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+
+  .threat-marker::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: inherit;
+    animation: threatPulse 1.2s infinite ease-out;
+    z-index: -1;
   }
 }

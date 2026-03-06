@@ -14,8 +14,13 @@ import Portals from "@/pages/Portals";
 import Resources from "@/pages/Resources";
 import Guides from "@/pages/Guides";
 import Dashboard from "@/pages/Dashboard";
+import MapDashboard from "@/pages/MapDashboard";
 import Admin from "@/pages/admin/Admin";
 import NotFound from "@/pages/NotFound";
+import PrivacyPolicy from "@/pages/legal/PrivacyPolicy";
+import TermsAndConditions from "@/pages/legal/TermsAndConditions";
+import GuidelinesPage from "@/pages/legal/GuidelinesPage";
+import GuideDetail from "@/pages/GuideDetail";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +42,12 @@ const App = () => (
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/guides" element={<Guides />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/map-dashboard" element={<MapDashboard />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsAndConditions />} />
+                <Route path="/guidelines" element={<GuidelinesPage />} />
+                <Route path="/guides/:id" element={<GuideDetail />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

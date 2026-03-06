@@ -8,12 +8,12 @@ class AttackService:
     SEVERITIES = ["low", "medium", "high", "critical"]
     
     CITIES = {
-        "India": ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai", "Pune", "Kolkata"],
-        "Ireland": ["Dublin", "Cork", "Galway", "Limerick", "Waterford", "Drogheda", "Dundalk"]
+        "India": ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai", "Pune", "Kolkata", "Jaipur", "Ahmedabad", "Surat", "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane", "Bhopal", "Visakhapatnam", "Pimpri-Chinchwad", "Patna", "Vadodara", "Ghaziabad", "Ludhiana", "Agra", "Nashik", "Faridabad", "Meerut", "Rajkot", "Kalyan-Dombivli", "Vasai-Virar", "Varanasi", "Srinagar", "Aurangabad", "Dhanbad", "Amritsar", "Navi Mumbai", "Allahabad", "Howrah", "Ranchi", "Guwahati", "Gwalior", "Jabalpur", "Coimbatore", "Vijayawada", "Jodhpur", "Madurai", "Raipur", "Kota", "Chandigarh", "Trivandrum", "Kochi", "Bhubaneswar", "Dehradun", "Noida", "Gurgaon"],
+        "Ireland": ["Dublin", "Cork", "Galway", "Limerick", "Waterford", "Drogheda", "Dundalk", "Kilkenny", "Sligo", "Athlone", "Wexford", "Tralee", "Killarney", "Letterkenny", "Bray", "Ennis"]
     }
 
     @staticmethod
-    def get_attacks(country_id=None, limit=20):
+    def get_attacks(country_id=None, limit=200):
         query = Attack.query
         if country_id:
             query = query.filter_by(country_id=country_id)
@@ -22,7 +22,7 @@ class AttackService:
         
         # If no attacks exist for the country, simulate some initial ones
         if not attacks and country_id:
-            AttackService.simulate_attack(country_id, count=10)
+            AttackService.simulate_attack(country_id, count=150)
             attacks = query.order_by(Attack.timestamp.desc()).limit(limit).all()
             
         return [a.to_dict() for a in attacks]
@@ -39,7 +39,7 @@ class AttackService:
         
         if not attacks and country_id:
             # Seed some data if empty to show the gauge working
-            AttackService.simulate_attack(country_id, count=5)
+            AttackService.simulate_attack(country_id, count=20)
             attacks = query.filter(Attack.timestamp >= last_24h).all()
 
         high_count = sum(1 for a in attacks if a.severity in ['high', 'critical'])

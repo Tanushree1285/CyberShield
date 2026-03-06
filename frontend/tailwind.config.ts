@@ -68,6 +68,11 @@ export default {
           red: "hsl(var(--cyber-red))",
           purple: "hsl(var(--cyber-purple))",
         },
+        theme: {
+          heading: "var(--text-heading)",
+          secondary: "var(--text-secondary)",
+          glow: "var(--accent-glow)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -33,7 +33,7 @@ export const ThreatLevelGauge = ({ score = 0, level = "Low" }: { score: number; 
     };
 
     return (
-        <div className="rounded-xl border border-border bg-card p-6 cyber-border relative overflow-hidden group">
+        <div className="cyber-card p-6 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 {getIcon()}
             </div>
@@ -95,7 +95,7 @@ export const ThreatLevelGauge = ({ score = 0, level = "Low" }: { score: number; 
 /** Animated line chart for cybercrime trends */
 export const CybercrimeTrendsChart = ({ data = [], country = "All" }: { data: any[]; country: string }) => {
     return (
-        <div className="rounded-xl border border-border bg-card p-6 cyber-border">
+        <div className="cyber-card p-6">
             <div className="flex items-center justify-between mb-8">
                 <div>
                     <h3 className="text-lg font-bold tracking-tight">Cybercrime Trends</h3>

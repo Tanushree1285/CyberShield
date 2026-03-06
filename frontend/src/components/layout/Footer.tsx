@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Shield, X, Mail } from "lucide-react";
 import {
   Dialog,
@@ -15,16 +16,21 @@ const Footer = () => {
     <>
       <footer className="border-t border-border bg-card mt-auto">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border pt-8">
             <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-primary" />
-              <span className="font-semibold text-gradient-cyber">CyberShield</span>
+              <img src="/logo.png" alt="CyberShield Logo" className="h-5 w-5 object-contain" />
+              <span className="font-semibold text-foreground">CyberShield</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-primary transition-colors">Terms and Condition</Link>
+              <Link to="/guidelines" className="hover:text-primary transition-colors">Guidelines</Link>
             </div>
             <button
               onClick={() => setOpen(true)}
               className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer underline-offset-4 hover:underline"
             >
-              © 2026 CyberShield. Region-aware cyber resource intelligence platform.
+              © 2026 CyberShield. Global cyber resource network.
             </button>
           </div>
         </div>
@@ -34,7 +40,7 @@ const Footer = () => {
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-gradient-cyber flex items-center gap-2">
-              <Shield className="h-6 w-6 text-primary" />
+              <img src="/logo.png" alt="CyberShield Logo" className="h-6 w-6 object-contain" />
               CyberShield Legal &amp; License Information
             </DialogTitle>
           </DialogHeader>
