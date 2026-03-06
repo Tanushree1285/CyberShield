@@ -8,7 +8,7 @@ interface ResourceCardProps {
   icon?: ReactNode;
   actions?: ReactNode;
   tag?: string;
-  type?: "cybercrime" | "advisory" | "awareness" | string;
+  type?: "high_profile" | "advisory" | "awareness" | string;
   published_date?: string;
   source?: string;
   url?: string;
@@ -16,7 +16,7 @@ interface ResourceCardProps {
 
 const getTypeColor = (type?: string) => {
   switch (type?.toLowerCase()) {
-    case "cybercrime": return "badge-cybercrime";
+    case "high_profile": return "badge-high-profile";
     case "advisory": return "badge-advisory";
     case "awareness": return "badge-awareness";
     default: return "bg-primary/10 text-primary border-primary/20";

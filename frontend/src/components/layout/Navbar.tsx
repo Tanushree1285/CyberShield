@@ -34,9 +34,9 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${pathname === item.path
-                ? "text-primary"
-                : "text-muted-foreground"
+              className={`text-base font-semibold transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] ${pathname === item.path
+                ? "text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                : "text-white/80"
                 }`}
             >
               {item.label}
@@ -66,9 +66,9 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${pathname === item.path
-                  ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                className={`px-3 py-2 rounded-md text-base font-semibold transition-all ${pathname === item.path
+                  ? "bg-white/10 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                  : "text-white/80 hover:text-white hover:bg-white/5 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
                   }`}
               >
                 {item.label}

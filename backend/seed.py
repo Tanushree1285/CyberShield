@@ -46,7 +46,7 @@ def seed_db():
                 Portal(name="Sanchar Saathi", url="https://sancharsaathi.gov.in", description="Portal to report telecom fraud, block lost mobile phones, and manage spam communications.", country_id=india.id),
                 Portal(name="Maharashtra Cyber", url="https://www.mahacyber.gov.in", description="Cybercrime awareness and reporting portal managed by Maharashtra Cyber Cell.", country_id=india.id),
                 Portal(name="Garda Cyber Crime Bureau", url="https://www.garda.ie/en/about-us/our-departments/garda-national-cyber-crime-bureau-gnccb-/", description="Cybercrime investigation unit of the Irish police providing reporting guidance.", country_id=ireland.id),
-                Portal(name="National Cyber Security Centre Ireland", url="https://www.ncsc.gov.ie", description="Ireland's national authority responsible for cybersecurity guidance and incident response.", country_id=ireland.id),
+                Portal(name="National Cyber Security Centre Ireland", url="https://www.gov.ie/en/", description="Ireland's national authority responsible for cybersecurity guidance and incident response.", country_id=ireland.id),
                 Portal(name="CSIRT-IE Incident Reporting", url="https://www.ncsc.gov.ie/contact/report-an-incident/", description="Official portal to report cybersecurity incidents affecting organisations in Ireland.", country_id=ireland.id),
                 Portal(name="Hotline.ie", url="https://www.hotline.ie", description="Irish internet safety hotline to report illegal or harmful online content.", country_id=ireland.id),
                 Portal(name="IRISS", url="https://www.iriss.ie", description="Irish cyber threat intelligence and security information sharing service.", country_id=ireland.id),

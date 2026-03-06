@@ -15,6 +15,7 @@ def start_scheduler(app):
         from automation.jobs.fetch_gov_ie import fetch_gov_ie_advisories
         from automation.jobs.fetch_garda import fetch_garda_advisories
         from automation.jobs.fetch_central_bank import fetch_central_bank_advisories
+        from automation.jobs.fetch_cyber_ireland import fetch_cyber_ireland_advisories
         
         import os
         if os.environ.get('WERKZEUG_RUN_MAIN') == 'true' or not app.debug:
@@ -30,9 +31,10 @@ def start_scheduler(app):
                     fetch_gov_ie_advisories()
                     fetch_garda_advisories()
                     fetch_central_bank_advisories()
+                    fetch_cyber_ireland_advisories()
 
-            # Execute all jobs every 6 hours
-            scheduler.add_job(func=run_jobs, trigger="interval", hours=6)
+            # Execute all jobs every 10 minutes
+            scheduler.add_job(func=run_jobs, trigger="interval", minutes=10)
 
             scheduler.start()
             atexit.register(lambda: scheduler.shutdown())

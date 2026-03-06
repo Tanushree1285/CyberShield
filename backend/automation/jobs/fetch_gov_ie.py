@@ -42,6 +42,21 @@ def fetch_gov_ie_advisories():
                 if len(text) > 15 and ('cyber' in text.lower() or 'security' in text.lower() or 'scam' in text.lower()):
                     full_url = href if href.startswith('http') else f"https://www.gov.ie{href}"
                     
+                    parsed_date = datetime.utcnow()
+                    import re
+                    from dateutil import parser
+                    
+                    parent_text = link.parent.get_text() if link.parent else text
+                    date_pattern = r'(\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})'
+                    d_match = re.search(date_pattern, parent_text, re.IGNORECASE)
+                    
+                    if d_match:
+                        try:
+                            date_str = re.sub(r'(st|nd|rd|th)', '', d_match.group(1))
+                            parsed_date = parser.parse(date_str)
+                        except:
+                            pass
+
                     if not Article.query.filter_by(url=full_url).first():
                         new_article = Article(
                             title=text,
@@ -50,7 +65,7 @@ def fetch_gov_ie_advisories():
                             source="Government of Ireland",
                             country_id=ireland.id,
                             type=detect_type(text, "security notice"),
-                            published_date=datetime.utcnow() 
+                            published_date=parsed_date 
                         )
                         db.session.add(new_article)
                         advisories_added += 1

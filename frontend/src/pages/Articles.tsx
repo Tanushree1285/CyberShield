@@ -2,9 +2,11 @@ import { useSearchParams } from "react-router-dom";
 import PageContainer from "@/components/layout/PageContainer";
 import ResourceCard from "@/components/ui/ResourceCard";
 import CountrySelector from "@/components/ui/CountrySelector";
+import { useState, useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { useFetchResources } from "@/hooks/useFetchResources";
 import { articleApi, Article } from "@/api";
-import { Newspaper, SearchX } from "lucide-react";
+import { Newspaper, SearchX, RefreshCw } from "lucide-react";
 
 /** Articles page — cybersecurity advisories and news */
 const Articles = () => {
@@ -19,6 +21,30 @@ const Articles = () => {
     type: selectedType === "all" ? undefined : selectedType,
     sort: sortOrder,
   });
+
+  const queryClient = useQueryClient();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Auto refresh every 5 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      queryClient.invalidateQueries({ queryKey: ["articles"] });
+    }, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [queryClient]);
+
+  const handleRefresh = async () => {
+    if (isRefreshing) return;
+    setIsRefreshing(true);
+    try {
+      await articleApi.refresh();
+      await queryClient.invalidateQueries({ queryKey: ["articles"] });
+    } catch (error) {
+      console.error("Failed to refresh articles:", error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   // Handlers to update URL
   const handleTypeChange = (type: string) => {
@@ -39,7 +65,7 @@ const Articles = () => {
 
   const TABS = [
     { label: "All", value: "all" },
-    { label: "Cybercrime", value: "cybercrime" },
+    { label: "High Profile Cases", value: "high_profile" },
     { label: "Advisories", value: "advisory" },
     { label: "Awareness", value: "awareness" }
   ];
@@ -67,20 +93,31 @@ const Articles = () => {
           ))}
         </div>
 
-        {/* Sorting Dropdown */}
-        <div className="flex items-center gap-2 shrink-0">
-          <label htmlFor="sort-order" className="text-sm text-muted-foreground whitespace-nowrap">
-            Sort by:
-          </label>
-          <select
-            id="sort-order"
-            value={sortOrder}
-            onChange={(e) => handleSortChange(e.target.value)}
-            className="h-9 px-3 pr-8 py-1 rounded-md border border-input bg-background text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+        {/* Actions (Refresh & Sorting) */}
+        <div className="flex flex-wrap items-center gap-4 shrink-0">
+          <button
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md border border-border bg-card hover:bg-muted transition-colors disabled:opacity-50"
           >
-            <option value="desc">Latest First</option>
-            <option value="asc">Oldest First</option>
-          </select>
+            <RefreshCw className={`h-4 w-4 ${isRefreshing ? "animate-spin" : ""}`} />
+            <span className="hidden sm:inline">{isRefreshing ? "Refreshing..." : "Refresh"}</span>
+          </button>
+
+          <div className="flex items-center gap-2">
+            <label htmlFor="sort-order" className="text-sm text-muted-foreground whitespace-nowrap">
+              Sort by:
+            </label>
+            <select
+              id="sort-order"
+              value={sortOrder}
+              onChange={(e) => handleSortChange(e.target.value)}
+              className="h-9 px-3 pr-8 py-1 rounded-md border border-input bg-background text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            >
+              <option value="desc">Latest First</option>
+              <option value="asc">Oldest First</option>
+            </select>
+          </div>
         </div>
       </div>
 

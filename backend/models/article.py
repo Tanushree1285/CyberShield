@@ -9,7 +9,7 @@ class Article(db.Model):
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text, nullable=False)
     source = db.Column(db.String(100)) # e.g., 'CERT-In', 'NCSC'
-    url = db.Column(db.String(255), unique=True, index=True)
+    url = db.Column(db.String(255), index=True)
     type = db.Column(db.String(50), nullable=False, default="advisory", index=True)
     published_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, index=True)
     

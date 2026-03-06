@@ -15,9 +15,9 @@ const OFFICIAL_PORTALS: Record<string, Portal[]> = {
         { id: "p5", name: "MeitY Cybersecurity", url: "https://www.meity.gov.in/", description: "Ministry of Electronics and Information Technology's cyber initiatives.", country: "India" },
     ],
     "Ireland": [
-        { id: "p6", name: "NCSC Ireland", url: "https://www.ncsc.gov.ie/", description: "Ireland's National Cyber Security Centre for guidance and incident response.", country: "Ireland" },
+        { id: "p6", name: "NCSC Ireland", url: "https://www.ncsc.gov.ie/news/", description: "Ireland's National Cyber Security Centre for guidance and incident response.", country: "Ireland" },
         { id: "p7", name: "Government of Ireland Cybersecurity Portal", url: "https://www.gov.ie/en/publication/cybersecurity-notices/", description: "Official cybersecurity notices and publications from the Irish Government.", country: "Ireland" },
-        { id: "p8", name: "An Garda Síochána Public Warnings", url: "https://www.garda.ie/en/Crime/Cybercrime/", description: "Public warnings and reporting guidance from Ireland's national police.", country: "Ireland" },
+        { id: "p8", name: "An Garda Síochána Public Warnings", url: "https://www.garda.ie/en/", description: "Public warnings and reporting guidance from Ireland's national police.", country: "Ireland" },
         { id: "p9", name: "Central Bank Ireland Cyber Alerts", url: "https://www.centralbank.ie/news/article", description: "Cybersecurity alerts and news for the Irish financial sector.", country: "Ireland" },
         { id: "p10", name: "CERT-IE", url: "https://www.cert.IE/", description: "Ireland's Computer Emergency Response Team for public and private sectors.", country: "Ireland" },
     ]

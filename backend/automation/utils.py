@@ -4,26 +4,32 @@ def detect_type(title, description=""):
     """
     text = (title + " " + description).lower()
 
-    cybercrime_keywords = [
-        "attack", "breach", "hacked", "malware", "virus", "trojan",
-        "ransomware", "phishing", "exploit", "vulnerability", "cve",
-        "data leak", "cyber crime", "cybercrime", "fraud", "scam",
-        "theft", "stolen", "arrest", "dark web", "ddos"
+    high_profile_keywords = [
+        "arrest", "scam", "breach", "cyber attack", "fraud", 
+        "ransomware", "hacking incident"
+    ]
+
+    advisory_keywords = [
+        "advisory", "warning", "cert", "alert", 
+        "vulnerability notice", "security bulletin"
     ]
 
     awareness_keywords = [
-        "awareness", "guideline", "guidelines", "best practices", "how to", "guide",
-        "training", "security tips", "tips", "precaution", "protect", "safe", "education",
-        "public notice", "campaign", "initiative", "framework", "policy",
-        "strategy", "advice", "report", "survey"
+        "awareness", "guide", "tips", "best practices", 
+        "how to protect", "cyber safety"
     ]
 
-    for word in cybercrime_keywords:
+    for word in high_profile_keywords:
         if word in text:
-            return "cybercrime"
+            return "high_profile"
+            
+    for word in advisory_keywords:
+        if word in text:
+            return "advisory"
 
     for word in awareness_keywords:
         if word in text:
             return "awareness"
 
+    # Default if no keywords match but we want to fallback to advisory
     return "advisory"

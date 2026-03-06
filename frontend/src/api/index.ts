@@ -8,7 +8,7 @@ export interface Article {
   id: string;
   title: string;
   description: string;
-  type: "advisory" | "cybercrime" | "awareness";
+  type: "advisory" | "high_profile" | "awareness";
   country: string;
   published_date: string;
   source: string;
@@ -57,6 +57,7 @@ export const articleApi = {
   getAll: (params?: { country?: string; type?: string; sort?: string; page?: number; per_page?: number }) =>
     api.get("/articles", { params }),
   getById: (id: string) => api.get(`/articles/${id}`),
+  refresh: () => api.post("/articles/refresh"),
   create: (data: Partial<Article>) => api.post("/articles", data),
   update: (id: string, data: Partial<Article>) => api.put(`/articles/${id}`, data),
   delete: (id: string) => api.delete(`/articles/${id}`),

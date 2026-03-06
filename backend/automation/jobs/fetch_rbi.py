@@ -41,7 +41,29 @@ def fetch_rbi_advisories():
                 
                 if len(text) > 15 and ('cyber' in text.lower() or 'fraud' in text.lower() or 'security' in text.lower()):
                     full_url = href if href.startswith('http') else f"https://rbi.org.in/Scripts/{href}"
+                    parsed_date = datetime.utcnow()
+                    import re
+                    from dateutil import parser
                     
+                    parent_text = link.parent.get_text() if link.parent else text
+                    date_pattern = r'(\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})'
+                    d_match = re.search(date_pattern, parent_text, re.IGNORECASE)
+                    
+                    if d_match:
+                        try:
+                            date_str = re.sub(r'(st|nd|rd|th)', '', d_match.group(1))
+                            parsed_date = parser.parse(date_str)
+                        except:
+                            pass
+                    else:
+                        date_pattern_short = r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4})'
+                        d_match_short = re.search(date_pattern_short, parent_text, re.IGNORECASE)
+                        if d_match_short:
+                            try:
+                                parsed_date = parser.parse(d_match_short.group(1))
+                            except:
+                                pass
+
                     if not Article.query.filter_by(url=full_url).first():
                         new_article = Article(
                             title=text,
@@ -50,7 +72,7 @@ def fetch_rbi_advisories():
                             source="Reserve Bank of India",
                             country_id=india.id,
                             type=detect_type(text, "Recent circular/advisory from the Reserve Bank of India."),
-                            published_date=datetime.utcnow() 
+                            published_date=parsed_date 
                         )
                         db.session.add(new_article)
                         advisories_added += 1

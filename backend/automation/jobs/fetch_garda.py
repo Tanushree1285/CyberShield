@@ -42,6 +42,30 @@ def fetch_garda_advisories():
                 if len(text) > 15 and ('fraud' in text.lower() or 'scam' in text.lower() or 'crime' in text.lower() or 'cyber' in text.lower()):
                     full_url = href if href.startswith('http') else f"https://www.garda.ie{href}"
                     
+                    parsed_date = datetime.utcnow()
+                    import re
+                    from dateutil import parser
+                    
+                    parent_text = link.parent.get_text() if link.parent else text
+                    
+                    date_pattern = r'(\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})'
+                    d_match = re.search(date_pattern, parent_text, re.IGNORECASE)
+                    
+                    if d_match:
+                        try:
+                            date_str = re.sub(r'(st|nd|rd|th)', '', d_match.group(1))
+                            parsed_date = parser.parse(date_str)
+                        except:
+                            pass
+                    else:
+                        date_pattern_short = r'(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4})'
+                        d_match_short = re.search(date_pattern_short, parent_text, re.IGNORECASE)
+                        if d_match_short:
+                            try:
+                                parsed_date = parser.parse(d_match_short.group(1))
+                            except:
+                                pass
+
                     if not Article.query.filter_by(url=full_url).first():
                         new_article = Article(
                             title=text,
@@ -50,7 +74,7 @@ def fetch_garda_advisories():
                             source="An Garda Síochána",
                             country_id=ireland.id,
                             type=detect_type(text, "cybercrime notice fraud warning"),
-                            published_date=datetime.utcnow() 
+                            published_date=parsed_date 
                         )
                         db.session.add(new_article)
                         advisories_added += 1

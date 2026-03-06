@@ -63,6 +63,32 @@ def fetch_ncsc_advisories():
                     else:
                         full_url = href
                     
+                    # Try to find a date in the surrounding elements or next paragraph
+                    parsed_date = datetime.utcnow()
+                    import re
+                    
+                    # NCSC usually places dates in either the text itself or the subsequent <p> tag
+                    date_pattern = r'(\d{1,2}(?:st|nd|rd|th)?\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})'
+                    
+                    text_match = re.search(date_pattern, text, re.IGNORECASE)
+                    if text_match:
+                        try:
+                            date_str = re.sub(r'(st|nd|rd|th)', '', text_match.group(1))
+                            parsed_date = parser.parse(date_str)
+                        except:
+                            pass
+                    else:
+                        # Check the next paragraph
+                        next_p = link.find_next('p')
+                        if next_p and next_p.text:
+                            p_match = re.search(date_pattern, next_p.text, re.IGNORECASE)
+                            if p_match:
+                                try:
+                                    date_str = re.sub(r'(st|nd|rd|th)', '', p_match.group(1))
+                                    parsed_date = parser.parse(date_str)
+                                except:
+                                    pass
+
                     # Simple check to avoid creating duplicates
                     exists = Article.query.filter_by(url=full_url).first()
                     if not exists:
@@ -74,7 +100,7 @@ def fetch_ncsc_advisories():
                             source="NCSC Ireland",
                             country_id=ireland.id,
                             type=detect_type(text, desc_text),
-                            published_date=datetime.utcnow() 
+                            published_date=parsed_date 
                         )
                         db.session.add(new_article)
                         advisories_added += 1

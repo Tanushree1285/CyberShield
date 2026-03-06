@@ -81,7 +81,7 @@ const Home = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
-                  const chatbotToggle = document.querySelector('[aria-label="Toggle chatbot"]') as HTMLButtonElement;
+                  const chatbotToggle = document.querySelector('[aria-label="Open chat"]') as HTMLButtonElement;
                   if (chatbotToggle) chatbotToggle.click();
                 }}
                 className="px-8 py-4 glass-card font-bold text-foreground hover:bg-foreground/5 transition-all text-lg border border-border/40 flex items-center gap-3 shadow-md"
