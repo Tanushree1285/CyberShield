@@ -106,7 +106,7 @@ const Home = () => {
               {/* Floating UI Cards */}
               <motion.div
                 style={{ x: card1X, y: card1Y }}
-                className="absolute top-0 -left-12 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
+                className="hidden md:block absolute top-0 -left-12 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-primary/20 rounded-lg">
@@ -119,7 +119,7 @@ const Home = () => {
 
               <motion.div
                 style={{ x: card2X, y: card2Y }}
-                className="absolute top-1/3 -right-16 glass-card p-5 w-56 shadow-3xl border-border/20 z-20"
+                className="hidden md:block absolute top-1/3 -right-16 glass-card p-5 w-56 shadow-3xl border-border/20 z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-red-500/20 rounded-lg">
@@ -132,7 +132,7 @@ const Home = () => {
 
               <motion.div
                 style={{ x: card3X, y: card3Y }}
-                className="absolute bottom-10 -left-8 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
+                className="hidden md:block absolute bottom-10 -left-8 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-cyber-glow/20 rounded-lg">
@@ -145,7 +145,7 @@ const Home = () => {
 
               <motion.div
                 style={{ x: card4X, y: card4Y }}
-                className="absolute -bottom-10 right-0 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
+                className="hidden md:block absolute -bottom-10 right-0 glass-card p-5 w-56 shadow-2xl border-border/20 z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-purple-500/20 rounded-lg">

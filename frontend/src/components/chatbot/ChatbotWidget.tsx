@@ -66,7 +66,7 @@ const ChatbotWidget = () => {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-80 rounded-lg border border-[rgba(245,158,11,0.15)] bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-gradient-to-br from-[rgba(245,158,11,0.1)] via-black/40 to-[rgba(180,83,9,0.1)] flex flex-col max-h-[28rem] animate-fade-in">
+    <div className="fixed bottom-6 right-6 z-50 w-[calc(100vw-3rem)] sm:w-80 rounded-lg border border-[rgba(245,158,11,0.15)] bg-black/40 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] bg-gradient-to-br from-[rgba(245,158,11,0.1)] via-black/40 to-[rgba(180,83,9,0.1)] flex flex-col max-h-[80vh] sm:max-h-[28rem] animate-fade-in">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(245,158,11,0.15)] bg-[rgba(245,158,11,0.05)] rounded-t-lg">
         <span className="font-semibold text-sm text-[rgba(253,230,138,0.9)] drop-shadow-sm">CyberShield Assistant</span>
