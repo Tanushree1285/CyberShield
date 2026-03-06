@@ -44,12 +44,12 @@ const StatsCard = ({ label, value, icon, trend, severity, lastUpdated }: StatsCa
       case "high": return "border-orange-500/50 text-orange-500 bg-orange-500/5";
       case "medium": return "border-yellow-500/50 text-yellow-500 bg-yellow-500/5";
       case "low": return "border-green-500/50 text-green-500 bg-green-500/5";
-      default: return "border-border bg-card";
+      default: return "";
     }
   };
 
   return (
-    <div className={`group relative rounded-xl border p-5 transition-all duration-300 hover:cyber-glow hover:-translate-y-1 ${getSeverityColor()} ${!severity ? 'cyber-border' : ''}`}>
+    <div className={`group relative cyber-card p-5 transition-all duration-300 hover:-translate-y-1 ${getSeverityColor()}`}>
       <div className="flex items-center justify-between mb-4">
         <div className="rounded-lg bg-primary/10 p-2.5 text-primary shadow-inner">
           {icon}

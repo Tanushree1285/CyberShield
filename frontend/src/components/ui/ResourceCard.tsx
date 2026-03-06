@@ -16,9 +16,9 @@ interface ResourceCardProps {
 
 const getTypeColor = (type?: string) => {
   switch (type?.toLowerCase()) {
-    case "cybercrime": return "bg-red-500/10 text-red-500 border-red-500/20";
-    case "advisory": return "bg-blue-500/10 text-blue-500 border-blue-500/20";
-    case "awareness": return "bg-green-500/10 text-green-500 border-green-500/20";
+    case "cybercrime": return "badge-cybercrime";
+    case "advisory": return "badge-advisory";
+    case "awareness": return "badge-awareness";
     default: return "bg-primary/10 text-primary border-primary/20";
   }
 };
@@ -45,7 +45,7 @@ const ResourceCard = ({ title, description, country, icon, actions, tag, type, p
   const isRecent = isNew(published_date);
 
   return (
-    <div className="group rounded-lg border border-border bg-card p-5 hover:cyber-border hover:cyber-glow transition-all duration-300 flex flex-col h-full">
+    <div className="group cyber-card p-5 transition-all duration-300 flex flex-col h-full">
       <div className="flex items-start justify-between gap-3 mb-4 flex-1">
         <div className="flex items-start gap-3 flex-1">
           {icon && (

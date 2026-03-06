@@ -23,11 +23,10 @@ const Admin = () => {
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === tab.key
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.key
                 ? "border-primary text-primary"
                 : "border-transparent text-muted-foreground hover:text-foreground"
-            }`}
+              }`}
           >
             {tab.icon}
             {tab.label}
@@ -36,7 +35,7 @@ const Admin = () => {
       </div>
 
       {/* Placeholder form */}
-      <div className="rounded-lg border border-border bg-card p-6">
+      <div className="cyber-card p-6">
         <h3 className="font-semibold mb-4 capitalize">Add New {activeTab.slice(0, -1)}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -61,7 +60,7 @@ const Admin = () => {
       </div>
 
       {/* Placeholder table */}
-      <div className="mt-8 rounded-lg border border-border bg-card overflow-hidden">
+      <div className="mt-8 cyber-card overflow-hidden">
         <div className="px-6 py-4 border-b border-border">
           <h3 className="font-semibold capitalize">Existing {activeTab}</h3>
         </div>

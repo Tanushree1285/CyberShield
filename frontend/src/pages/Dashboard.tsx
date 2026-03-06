@@ -7,7 +7,7 @@ import {
   CybercrimeTrendsChart
 } from "@/components/dashboard/DashboardComponents";
 import InteractiveMap from "@/components/dashboard/InteractiveMap";
-import TacticalMapModal from "@/components/dashboard/TacticalMapModal";
+import LiveIncidentFeed from "@/components/dashboard/LiveIncidentFeed";
 import { Newspaper, Phone, Globe, BookOpen, ShieldAlert, Activity, RefreshCw } from "lucide-react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { dashboardApi, attackApi } from "@/api";
@@ -17,7 +17,6 @@ import { useAppStore } from "@/store/AppContext";
 const Dashboard = () => {
   const queryClient = useQueryClient();
   const { selectedCountry } = useAppStore();
-  const [isTacticalMode, setIsTacticalMode] = useState(false);
   const [lastRefreshed, setLastRefreshed] = useState(0);
 
   // Fetch KPI Stats
@@ -138,6 +137,9 @@ const Dashboard = () => {
         <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
       </div>
 
+
+
+      {/* BOTTOM SECTION: KPI, Gauges, Trends */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
         {/* KPI Cards */}
         <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -158,23 +160,21 @@ const Dashboard = () => {
           <CybercrimeTrendsChart data={trendsData} country={selectedCountry} />
         </div>
 
-        {/* Interactive Map Replacement */}
-        <div className="h-full">
-          <InteractiveMap
-            country={selectedCountry === "All" ? "India" : selectedCountry}
-            attacks={attacksData}
-            onExpand={() => setIsTacticalMode(true)}
-          />
+        {/* Interactive Map & Feed */}
+        <div className="flex flex-col gap-4 h-full">
+          <div className="flex-1 min-h-[400px]">
+            <InteractiveMap
+              country={selectedCountry === "All" ? "India" : selectedCountry}
+              attacks={attacksData}
+            />
+          </div>
         </div>
       </div>
 
-      <TacticalMapModal
-        isOpen={isTacticalMode}
-        onClose={() => setIsTacticalMode(false)}
-        country={selectedCountry === "All" ? "India" : selectedCountry}
-        attacks={attacksData || []}
-        threatLevel={threatLevelData}
-      />
+      {/* Incident Feed below Map */}
+      <div className="mb-8 mt-2">
+        <LiveIncidentFeed className="border-t border-white/5" attacks={attacksData || []} />
+      </div>
     </PageContainer>
   );
 };

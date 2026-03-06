@@ -17,23 +17,26 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
+    <header className="sticky top-0 z-50 glass-navbar">
+      <div className="container mx-auto flex items-center justify-between h-20 px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <Shield className="h-7 w-7 text-primary group-hover:animate-pulse-glow transition-all" />
-          <span className="text-lg font-bold text-gradient-cyber">CyberShield</span>
+          <div className="relative">
+            <img src="/logo.png" alt="CyberShield Logo" className="h-8 w-8 object-contain drop-shadow-md group-hover:scale-110 transition-transform" />
+            <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full animate-pulse" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-foreground">CyberShield</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (
             <Link
-              key={item.path}
+              key={item.label}
               to={item.path}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === item.path
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+              className={`text-sm font-medium transition-colors hover:text-primary ${pathname === item.path
+                ? "text-primary"
+                : "text-muted-foreground"
                 }`}
             >
               {item.label}
@@ -43,12 +46,6 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-4">
           <CountrySelector />
-          <Link
-            to="/admin"
-            className="px-3 py-1.5 text-sm rounded-md border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
-          >
-            Admin
-          </Link>
         </div>
 
         {/* Mobile toggle */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { chatbotApi } from "@/api";
 
 interface Message {
@@ -43,13 +43,25 @@ const ChatbotWidget = () => {
 
   if (!open) {
     return (
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 rounded-full gradient-cyber p-3.5 shadow-lg hover:scale-105 transition-transform animate-pulse-glow"
-        aria-label="Open chat"
-      >
-        <MessageCircle className="h-6 w-6 text-primary-foreground" />
-      </button>
+      <>
+        {/* Hidden SVG array to make the gradient accessible to Bot */}
+        <svg width="0" height="0" className="absolute">
+          <defs>
+            <linearGradient id="chatbotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#cd7f32" />
+              <stop offset="50%" stopColor="#a0522d" />
+              <stop offset="100%" stopColor="#8b4513" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <button
+          onClick={() => setOpen(true)}
+          className="fixed bottom-6 right-6 z-50 rounded-full bg-card border border-border bronze-hue-soft p-4 shadow-[0_8px_30px_rgba(205,127,50,0.2)] hover:shadow-[0_12px_40px_rgba(205,127,50,0.3)] hover:-translate-y-1 transition-all animate-float flex items-center justify-center group"
+          aria-label="Open chat"
+        >
+          <Bot className="h-7 w-7 text-primary/80 transition-transform group-hover:scale-110" style={{ fill: "url(#chatbotGradient)", stroke: "rgba(139, 69, 19, 0.8)", strokeWidth: "1.5" }} />
+        </button>
+      </>
     );
   }
 
