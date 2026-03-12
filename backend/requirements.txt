@@ -3,5 +3,9 @@ Flask-SQLAlchemy
 Flask-CORS
 requests
 beautifulsoup4
-
 APScheduler
+google-cloud-dialogflow
+huggingface_hub
+python-dotenv
+python-dateutil
+urllib3
