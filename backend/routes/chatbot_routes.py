@@ -114,7 +114,7 @@ Always prioritize user safety and actionable advice.
 
     try:
         completion = client.chat.completions.create(
-            model="google/gemma-3-27b-it:featherless-ai",
+            model="meta-llama/Llama-3.1-8B-Instruct",
             messages=[
                 {
                     "role": "user",
