@@ -285,11 +285,72 @@
   .guide-document {
     max-width: 900px;
     margin: auto;
-    background: white;
+    background: var(--card);
+    color: var(--foreground);
     padding: 40px;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
   }
+
+  .guide-document h2 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--foreground);
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .guide-document h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.85rem;
+    color: var(--foreground);
+    border-left: 3px solid var(--primary);
+    padding-left: 0.75rem;
+  }
+
+  .guide-document p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    color: var(--muted-foreground);
+  }
+
+  .guide-document ul, .guide-document ol {
+    margin-top: 0.5rem;
+    margin-bottom: 1.75rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    color: var(--muted-foreground);
+  }
+
+  .guide-document li {
+    margin-bottom: 0.65rem;
+    line-height: 1.6;
+  }
+
+  .guide-document strong {
+    color: var(--foreground);
+    font-weight: 700;
+  }
+
+  .guide-document a {
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .guide-document a:hover {
+    color: var(--secondary);
+  }
+
 
   .section-divider {
     height: 1px;
